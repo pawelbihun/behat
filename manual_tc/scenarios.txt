@@ -1,0 +1,138 @@
+scenariusz pozytywny:
+### info: poprawne dane bierzemy z pliku data.json
+1: 	działanie: 			wypełniamy wszystkie pola i listy zgodnie z opisem, przy każdym wprowadzeniu danych sprawdzamy czy pole podświetli się na zielono, zaznaczamy pierwszy checkbox
+	oczekiwany rezulat: przekierowanie na stronę z informacją o wysłanym e-mailu rejestracyjnym
+	
+
+
+scenariusze negatywne:
+### info: poprawne dane bierzemy z pliku data.json / "valid_data_1" - reszta danych podana w scenariuszu
+### empty
+1: 	działanie: 			niepodajemy żadnych danych i klikamy załóż konto     
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, wymagane pola podświetlają się na czerwono
+
+
+### e-mail	
+2: 	działanie: 			niepodajemy adresu e-mail, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adresu podświetla się na czerwono i widzimy informację "Wpisz adres e-mail "
+	
+3: 	działanie: 			podajemy błędny format adresu e-mail np. "@gmail.com" i klikamy załóż konto
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adresu podświetla się na czerwono i widzimy informację "Nieprawidłowy adres email"
+
+
+### login	
+4: 	działanie: 			niepodajemy loginu, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole login podświetla się na czerwono i widzimy informację "Podaj login"
+	
+5: 	działanie: 			podajemy istniejący login "test" i klikamy załóż konto
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole login podświetla się na czerwono i widzimy informację "Login jest już zajęty"
+	
+6: 	działanie: 			podajemy błędny login - 20 znaków "aaaaaaaaaaaaaaaaaaaa" i klikamy załóż konto
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole login podświetla się na czerwono i widzimy informację "Login może mieć maksymalnie 16 znaków"
+	
+7: 	działanie: 			podajemy błędny login - ze spacją "test test" i klikamy załóż konto
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole login podświetla się na czerwono i widzimy informację "Login zawiera nieprawidłowe znaki"
+	
+8: 	działanie: 			podajemy błędny login - 3 spacje "   " i klikamy załóż konto
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole login podświetla się na czerwono i widzimy informację "Login zawiera nieprawidłowe znaki"
+	rzeczywisty rezultat:	poprawny login, zostajemy przekierowni na kolejną stronę, przychodzi do nas e-mail rejestracyjny
+
+
+### hasło
+9: 	działanie: 			niepodajemy hasła, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pod polem hasła widzimy informację "Użyj: minimum 8 znaków, 1 wielkiej litery, 1 małej litery, 1 cyfry." żadna jej część nie jest wyszarzona
+	
+10:	działanie: 			podajemy błędne hasło - 8 znaków ale tylko małe litery - "aaaaaaaa", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pod polem hasła widzimy informację "Użyj: minimum 8 znaków, 1 wielkiej litery, 1 małej litery, 1 cyfry." wyszarzone jest "minimum 8 znaków" i "1 małej litery" + inforamcja "Hasło nie zawiera wielkiej litery"
+	
+11:	działanie: 			podajemy błędne hasło - 8 znaków, małe litery i 1 dużą - "Aaaaaaaa", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pod polem hasła widzimy informację "Użyj: minimum 8 znaków, 1 wielkiej litery, 1 małej litery, 1 cyfry." wyszarzone jest "minimum 8 znaków", "1 małej litery" i "1 wielkiej litery" + inforamcja "Hasło nie zawiera cyfry"
+	
+12:	działanie: 			podajemy błędne hasło - 7 znaków, małe litery, 1 duża i 1 cyfra - "Aaaaaa1", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pod polem hasła widzimy informację "Użyj: minimum 8 znaków, 1 wielkiej litery, 1 małej litery, 1 cyfry." wyszarzone jest "1 małej litery", "1 wielkiej litery" i "1 cyfry" + inforamcja "Podaj dłuższe hasło"
+	
+13: działanie:	 		podajemy błędne hasło - 7 znaków, małe litery i 1 cyfra - "aaaaaa1", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pod polem hasła widzimy informację "Użyj: minimum 8 znaków, 1 wielkiej litery, 1 małej litery, 1 cyfry." wyszarzone jest "1 małej litery" i "1 cyfry" + inforamcja "Podaj dłuższe hasło"
+	
+	
+### numer telefonu
+14:	działanie: 			niepodajemy numeru, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole numer telefonu podświetla się na czerwono, pod polem widzimy informację "Podaj numer telefonu"
+
+15:	działanie: 			podajemy błędny numer - "1111", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole numer telefonu podświetla się na czerwono, pod polem widzimy informację "Nieprawidłowy numer telefonu"
+	
+16:	działanie: 			podajemy błędny numer - "652AAA999", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole numer telefonu podświetla się na czerwono, pod polem widzimy informację "Nieprawidłowy numer telefonu"
+	rzeczywisty rezultat:	system akceptuje numer telefonu w takim formacie, zostajemy przekierowani dalej
+	
+	
+### kraj
+17:	działanie: 			niewybieramy kraju, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę
+	
+18:	działanie: 			wybieramy błędny kraj dla posiadanych danych - "Niemcy", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole numer telefonu podświetla się na czerwono i widzimy informację "Nieprawidłowy numer telefonu"
+	
+19: działanie: 			wybieramy "inny kraj", wpisujemy jego nazwę polu Kraj - "Iran", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę
+	
+	
+### NIP
+20:	działanie: 			niepodajemy NIPu, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole NIP podświetla się na czerwono i widzimy informację "Podaj NIP"
+	
+21:	działanie: 			podajemy niepoprawny NIP - 9 cyfr "111111111", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole NIP podświetla się na czerwono i widzimy informację "Nieprawidłowy format NIPu"
+	
+22:	działanie: 			podajemy niepoprawny NIP - 11 cyfr "11111111111", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole NIP podświetla się na czerwono i widzimy informację "Nieprawidłowy format NIPu"
+	
+23:	działanie: 			podajemy niepoprawny NIP - 10 znaków alfanumerycznych "11111AAAAA", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole NIP podświetla się na czerwono i widzimy informację "Nieprawidłowy format NIPu"
+	
+	
+### rodzaj firmy
+24:	działanie: 			niewybieramy rodzaju firmy, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole rodzaj firmy podświetla się na czerwono i widzimy informację "Wybierz rodzaj firmy"
+	
+25:	działanie: 			wybieramy rodzaj firmy jako JDG, pole imię "11", pole nazwisko "22", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pola imię i nazwisko podświetla się na czerwono i widzimy informację "Imię/Nazwisko zawiera nieprawidłowe znaki"
+	
+26:	działanie: 			wybieramy rodzaj firmy jako JDG, pole imię "11", pole nazwisko "22", resztę pól wypełniamy poprawnymi danymi, następnie zmieniamy rodzaj firmy na dowolny inny, następnie przywracamy JDG i klikamy na Załóż Konto
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pola imię i nazwisko podświetla się na czerwono i widzimy informację "Imię/Nazwisko zawiera nieprawidłowe znaki"
+	rzeczywisty rezulat: 	system akceptuje pola imię "11" i nazwisko "22", zostajemy przekierowani dalej
+	
+27:	działanie: 			wybieramy rodzaj firmy jako "spółka akcyjna", nie uzupełniamy pola KRS, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole KRS podświetla się na czerwono i widzimy informację "Podaj KRS"
+	
+28:	działanie: 			wybieramy rodzaj firmy jako "spółka akcyjna", uzupełniamy pola KRS jako litery "asfgsadgsdag", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole KRS podświetla się na czerwono i widzimy informację "Numer KRS może zawierać tylko liczby"
+	
+29:	działanie: 			wybieramy rodzaj firmy jako "spółka akcyjna", uzupełniamy pola KRS błędną liczbą znaków - 9 "123456789", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole KRS podświetla się na czerwono, widzimy informację "Numer KRS powinien mieć 10 znaków" i na górze formularza na żółtym tle pojawia się ostrzeżenie "Upss.. Numer KRS powinien mieć 10 znaków"
+	
+	
+### adres
+30: działanie: 			niepodajemy adresu, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adres podświetla się na czerwono i widzimy informację "Podaj adres"
+	
+31: działanie: 			podajemy niepoprawne znaki w adresie - "aaa222!!!", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adres podświetla się na czerwono i widzimy informację "Podaj adres" i "Adres zawiera nieprawidłowe znaki"
+	
+32: działanie: 			niepodajemy miasta, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adres podświetla się na czerwono i widzimy informację "Podaj miasto"
+	
+33: działanie: 			podajemy niepoprawne znaki w mieście - "aaa222!!!", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adres podświetla się na czerwono i widzimy informację "Podaj miasto" i "Miasto zawiera nieprawidłowe znaki"
+	
+34: działanie: 			niepodajemy kodu pocztowego, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, pole adres podświetla się na czerwono i widzimy informację "Podaj kod pocztowy"
+	
+35: działanie: 			podajemy znaki inne niż cyfry w kodzie pocztowym - "aaa!!!", resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak wstawienia znakó innych niż cyfry w pole, brak przekierowania na kolejną stronę, pole adres podświetla się na czerwono i widzimy informację "Podaj kod pocztowy"
+	
+	
+### checkbox
+36: działanie: 			niezaznaczamy obowiązkowego (pierwszego) chceckboxa, resztę pól wypełniamy poprawnymi danymi
+	oczekiwany rezulat: brak przekierowania na kolejną stronę, chceckbox podświetla się na czerwono i widzimy informację "Musisz zaakceptować regulamin"
